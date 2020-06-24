@@ -20,6 +20,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.webmons.disono.vlc.VlcListener;
 import com.webmons.disono.vlc.VlcVideoLibrary;
@@ -196,6 +197,8 @@ public class VLCActivity extends Activity implements VlcListener, View.OnClickLi
     public void onPlayVlc() {
         _sendBroadCast("onPlayVlc");
 
+        Toast.makeText(this, "视频正在缓冲，请等待...", Toast.LENGTH_LONG).show();
+
         Drawable drawableIcon = getResources().getDrawable(_getResource("ic_pause_white_24dp", "drawable"));
         bStartStop.setImageDrawable(drawableIcon);
     }
@@ -249,7 +252,7 @@ public class VLCActivity extends Activity implements VlcListener, View.OnClickLi
                                     new Runnable() {
                                         @Override
                                         public void run() {
-                                            mediaPlayerControls.setVisibility(View.GONE); 
+                                            mediaPlayerControls.setVisibility(View.GONE);
                                         }
                                     }
                                 );
